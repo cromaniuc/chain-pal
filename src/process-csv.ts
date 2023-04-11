@@ -44,7 +44,7 @@ export async function processCsv(args: any): Promise<void> {
           });
         })
         .on('end', () => {
-          console.log('Csv file successfully processed!');
+          console.log('CSV file successfully processed!');
           resolve(transactionsArray);
         })
         .on('error', (err) => {
@@ -62,8 +62,6 @@ export async function processCsv(args: any): Promise<void> {
   }
 
   async function run() {
-    console.log(`started`);
-
     const fromNonceMapping = new Map();
 
     const chainIdHex = '0x1';
@@ -82,7 +80,7 @@ export async function processCsv(args: any): Promise<void> {
 
         let gasLimit = '0x5208';
         if ((await isContractAddress(tx.to)) === true) {
-          console.log('### has contract address');
+          console.log('>>> has contract address');
           const estimatedGas = await estimateGas(
             provider,
             tx.from,
@@ -93,7 +91,6 @@ export async function processCsv(args: any): Promise<void> {
 
           const number1 = ethers.BigNumber.from(gasLimit);
           gasLimit = ethers.utils.hexValue(number1.mul(1125).div(1000));
-          console.log('### gasLimit: ' + gasLimit);
         }
 
         console.log(`Transaction ${txIndex++}\n`);

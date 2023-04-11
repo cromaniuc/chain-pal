@@ -5,7 +5,7 @@ describe('convert', () => {
         const mockLog = jest.spyOn(console, 'log').mockImplementation();
         await convert({ value: 42 });
 
-        expect(mockLog).toHaveBeenCalledWith('toHexValue: 0x2a');
+        expect(mockLog).toHaveBeenCalledWith('hex value: 0x2a');
         mockLog.mockRestore();
     });
 
@@ -13,7 +13,7 @@ describe('convert', () => {
         const mockLog = jest.spyOn(console, 'log').mockImplementation();
         await convert({ value: '0x2a' });
 
-        expect(mockLog).toHaveBeenCalledWith('hexToNumber: 42');
+        expect(mockLog).toHaveBeenCalledWith('number value: 42');
         mockLog.mockRestore();
     });
 
@@ -31,8 +31,8 @@ describe('convertUnitWei', () => {
         const mockLog = jest.spyOn(console, 'log').mockImplementation();
         await convertUnitWei({ value: '1000000000', decimals: 18 });
 
-        expect(mockLog).toHaveBeenNthCalledWith(1, 'Value in Gwei: 1.0');
-        expect(mockLog).toHaveBeenNthCalledWith(2, 'Value in Ether: 0.000000001');
+        expect(mockLog).toHaveBeenNthCalledWith(1, 'gwei: 1.0');
+        expect(mockLog).toHaveBeenNthCalledWith(2, 'ether: 0.000000001');
         mockLog.mockRestore();
     });
 });
@@ -42,8 +42,8 @@ describe('convertUnitGwei', () => {
         const mockLog = jest.spyOn(console, 'log').mockImplementation();
         await convertUnitGwei({ value: '1', decimals: 18 });
 
-        expect(mockLog).toHaveBeenNthCalledWith(1, 'Value in Wei: 1000000000');
-        expect(mockLog).toHaveBeenNthCalledWith(2, 'Value in Ether: 0.000000001');
+        expect(mockLog).toHaveBeenNthCalledWith(1, 'wei: 1000000000');
+        expect(mockLog).toHaveBeenNthCalledWith(2, 'ether: 0.000000001');
         mockLog.mockRestore();
     });
 });
@@ -53,8 +53,8 @@ describe('convertUnitEther', () => {
         const mockLog = jest.spyOn(console, 'log').mockImplementation();
         await convertUnitEther({ value: '0.000000001', decimals: 18 });
 
-        expect(mockLog).toHaveBeenNthCalledWith(1, 'Value in Wei: 1000000000');
-        expect(mockLog).toHaveBeenNthCalledWith(2, 'Value in Gwei: 1.0');
+        expect(mockLog).toHaveBeenNthCalledWith(1, 'wei: 1000000000');
+        expect(mockLog).toHaveBeenNthCalledWith(2, 'gwei: 1.0');
         mockLog.mockRestore();
     });
 });

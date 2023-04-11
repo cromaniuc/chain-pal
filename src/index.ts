@@ -78,7 +78,7 @@ yargs
   )
   .command(
     'process-csv <httpEndpoint> <csvFilePath>',
-    'Process a CSV file containing transactions and output the transaction details, considering the gas price and gas limit for EVM-like chains',
+    'Process a CSV file containing transactions and output the transaction details ready to be signed, considering the gas price and gas limit for EVM-like chains',
     (yargs) =>
       yargs.options({
         httpEndpoint: {
@@ -109,7 +109,7 @@ yargs
     checkAddress,
   )
   .command(
-    'verify-address <address>',
+    'is-valid <address>',
     'Verify the validity of an EVM address',
     (yargs) =>
       yargs.options({
@@ -122,7 +122,7 @@ yargs
   )
   .command(
     'estimate-gas <httpEndpoint> <from> <to> <value>',
-    'Verify the validity of an EVM address',
+    'Estimates gas given from, to and value',
     (yargs) =>
       yargs.options({
         httpEndpoint: {
@@ -130,15 +130,15 @@ yargs
           string: true,
         },
         from: {
-          describe: 'The address to verify',
+          describe: 'The source address',
           string: true,
         },
         to: {
-          describe: 'The address to verify',
+          describe: 'The target address',
           string: true,
         },
         value: {
-          describe: 'The address to verify',
+          describe: 'The transaction value',
           string: true,
         },
       }),

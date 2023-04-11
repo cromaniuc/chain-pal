@@ -13,13 +13,13 @@ export async function checkAddress(args: any): Promise<void> {
   }
 
   const isContract = await isContractAddress(address);
-  console.log(isContract);
+  console.log('contract address? ' + isContract);
 }
 
 export async function verifyAddress(args: any): Promise<void> {
   if (ethers.utils.isAddress(args.address)) {
-    console.log('The address is valid.');
+    console.log('is valid');
   } else {
-    console.log('The address is not valid.');
+    console.log('invalid');
   }
 }

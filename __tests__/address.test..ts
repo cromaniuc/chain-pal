@@ -13,7 +13,7 @@ describe('checkAddress', () => {
       address: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
     });
 
-    expect(mockLog).toHaveBeenCalledWith(true);
+    expect(mockLog).toHaveBeenCalledWith("contract address? true");
     mockLog.mockRestore();
   });
 
@@ -28,7 +28,7 @@ describe('checkAddress', () => {
       address: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
     });
 
-    expect(mockLog).toHaveBeenCalledWith(false);
+    expect(mockLog).toHaveBeenCalledWith("contract address? false");
     mockLog.mockRestore();
   });
 });
@@ -40,7 +40,7 @@ describe('verifyAddress', () => {
       address: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
     });
 
-    expect(mockLog).toHaveBeenCalledWith('The address is valid.');
+    expect(mockLog).toHaveBeenCalledWith('is valid');
     mockLog.mockRestore();
   });
 
@@ -50,7 +50,7 @@ describe('verifyAddress', () => {
       address: '0x742d35Cc6634C0532925a3b844Bc454e4438f44',
     });
 
-    expect(mockLog).toHaveBeenCalledWith('The address is not valid.');
+    expect(mockLog).toHaveBeenCalledWith('invalid');
     mockLog.mockRestore();
   });
 });

@@ -54,8 +54,7 @@ describe('processCsv', () => {
             csvFilePath: 'test.csv',
         });
 
-        expect(mockLog).toHaveBeenCalledWith('started');
-        expect(mockLog).toHaveBeenCalledWith('Csv file successfully processed!');
+        expect(mockLog).toHaveBeenCalledWith('CSV file successfully processed!');
         mockLog.mockRestore();
     });
 });
