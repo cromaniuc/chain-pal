@@ -11,6 +11,7 @@ import {
 } from './convert';
 import { estimateGasWrapper } from './gas';
 import { processCsv } from './process-csv';
+import { encodeSignature } from './signature';
 
 yargs
   .command(
@@ -93,7 +94,7 @@ yargs
     processCsv,
   )
   .command(
-    'check-address <httpEndpoint> <address>',
+    'is-contract <httpEndpoint> <address>',
     'Checks if an address is a smart contract or not',
     (yargs) =>
       yargs.options({
@@ -143,5 +144,17 @@ yargs
         },
       }),
     estimateGasWrapper,
+  )
+  .command(
+    'encode-signature <signature>',
+    'Encode a function signature based on the input',
+    (yargs) =>
+      yargs.options({
+        signature: {
+          describe: 'The function signature to encode',
+          string: true,
+        },
+      }),
+    encodeSignature,
   )
   .help().argv;

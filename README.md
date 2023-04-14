@@ -46,14 +46,19 @@ considering the gas price and gas limit for EVM-like chains
 ```bash
 chain-pal process-csv <httpEndpoint> <csvFilePath>
 ```
- - httpEndpoint: The HTTP endpoint for the JSON-RPC provider.
+ - httpEndpoint: The HTTP endpoint for the JSON-RPC provider. It can be https://ethereum.publicnode.com
  - csvFilePath: The file path of the CSV to be processed.
+ - must have the following format:
+
+   | amountWei            | from                                       | to                                         |
+   ---------------------- | -------------------------------------------|--------------------------------------------|
+   | 10000000000000000000 | 0x71508f88e558b414f8a65b3b56362bfb7a9652b8 | 0xed1052b6017745d1fab9f0a0b10bc81bba6b5068 |
 
 ### Checks if an address is a smart contract or not.
 ```bash
-chain-pal check-address <httpEndpoint> <address>
+chain-pal is-contract <httpEndpoint> <address>
 ```
-httpEndpoint: The HTTP endpoint for the JSON-RPC provider.
+httpEndpoint: The HTTP endpoint for the JSON-RPC provider. It can be https://ethereum.publicnode.com
  - address: The address to be checked.
 
 ### Verify the validity of an EVM address.
@@ -66,7 +71,13 @@ chain-pal is-valid <address>
 ```bash
 chain-pal estimate-gas <httpEndpoint> <from> <to> <value>
 ```
- - httpEndpoint: The HTTP endpoint for the JSON-RPC provider.
+ - httpEndpoint: The HTTP endpoint for the JSON-RPC provider. It can be https://ethereum.publicnode.com
  - from: The source address.
  - to: The target address.
  - value: The transaction value.
+
+### Encode a function signature based on the input
+```bash
+chain-pal encode-signature <signature>
+```
+- signature: Keccak256 function to be encoded. e.g approve(address,uint256)
